@@ -16,14 +16,15 @@ do
         then
                 echo "l'utilisateur $user existe deja"
         else
-                sudo adduser $user
-        fi
+                sudo useradd $user
+
 
 #verification que l'utilisateur a bien été creer
-        if  ! cat /etc/passwd | grep $user >> /dev/null
-        then
-                echo "l'utilisateur $user a été créé"
-        else
-                echo "erreur a la creation de l'utilisateur $user"
+                if cat /etc/passwd | grep $user >> /dev/null
+        	then
+                	echo "l'utilisateur $user a été créé"
+        	else
+                	echo "erreur a la creation de l'utilisateur $user"
+        	fi
         fi
 done
